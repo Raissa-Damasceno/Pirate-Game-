@@ -11,28 +11,25 @@ let score = document.querySelector("span")
 let game;
 
 const startGame = () => {
-    
     splashScreen.style.display = "none";
-  
-    canvas.style.display = "flex"
-
+    canvas.style.display = "flex";
     game = new Game();
-
     game.gameLoop();
-
-}
+};
 
     const restartGame = () => {
         gameoverScreen.style.display = "none";
         canvas.style.display = "flex";
-
         game = new Game();
         game.gameLoop();
+};
 
-}
 
-restartBtn.addEventListener("click", restartGame)
+//Events
+
+restartBtn.addEventListener("click", restartGame);
 startBtn.addEventListener("click", startGame);
+
 document.addEventListener( "keydown", (event) => {
      game.player.playerMovement(event);
-})
+});

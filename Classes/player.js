@@ -1,8 +1,8 @@
 class Player{
     constructor(){
     this.playerImage = new Image();
-    this.playerImage.src = "/Image/pirate.png";
-    this.width = 150;
+    this.playerImage.src = "./Image/jack.png";
+    this.width = 100;
     this.height = 150;
     this.x = canvas.width / 2;
     this.y = canvas.height / 2;
@@ -11,11 +11,11 @@ class Player{
     this.yDirection = 1;
     this.xDirection = 1; 
     this.colectTresure = 0;
-    }
+    };
 
     drawPlayer = () => {
         ctx.drawImage(this.playerImage, this.x, this.y, this.width, this.height)
-    }
+    };
 
     playerMovement = (event) => {
         let arrowRight = "ArrowRight";
@@ -27,7 +27,7 @@ class Player{
         if (event.code === arrowRight) { 
             if(this.x < canvas.height - 140) {
             this.x = this.x + 30;
-            console.log("Right")
+            //console.log("Right")
         };
 
         } else if (event.code === arrowLeft) {
@@ -48,7 +48,7 @@ class Player{
             //console.log("Down")
           };
          };
-        };
+    };
 
     playerBombCollision = () => {
         
@@ -57,6 +57,7 @@ class Player{
             (this.y + 50) < game.bomb.y + game.bomb.height &&
             (this.height - 100) + (this.y + 50) > game.bomb.y){
                 return true
+                console.log(1)
             }
             else {
                return false
@@ -67,16 +68,16 @@ class Player{
 
     playerTresureCollision = () => {
         
-        if ((this.x + 50) < game.enemy.x + game.enemy.width &&
-            (this.x + 50) + (this.width - 150) > game.enemy.x &&
-            (this.y + 50) < game.enemy.y + game.enemy.height &&
-            (this.height - 75) + (this.y + 50) > game.enemy.y){
+        if ((this.x + 50) < game.treasure.x + game.treasure.width &&
+            (this.x + 80) + (this.width - 80) > game.treasure.x &&
+            (this.y + 80) < game.treasure.y + game.treasure.height &&
+            (this.height - 80) + (this.y + 80) > game.treasure.y){
                 return true
             } else {
                 return false
             }        
     };
-}
+};
   
 
     

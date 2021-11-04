@@ -2,56 +2,59 @@ class Game {
     constructor() {
         this.bg = new Image();
         this.bg.src = "/Image/log.png";
-        this.enemy = new Enemy();
+        this.treasure = new Treasure();
         this.player = new Player();
         this.bomb = new Bomb();
         this.isGameOver = false; 
         this.score = 0;     
-    }
+    };
 
     gameover = () => {
         this.isGameOver = true;
         canvas.style.display = "none"
         gameoverScreen.style.display = "flex"
-    }
+    };
     
     gameLoop = () => {
-       this.enemy.counter ++;
-       this.bomb.counter ++;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
         
-
-
-        //if(this.enemy.counter % 120 === 0) {
-        //    this.enemy.covidMovement();
-        //};
-        
-        if(this.bomb.counter % 80 === 0){
-            this.bomb.bombMovement()
-        };
-
+        //Movement functions
+        this.bomb.movementBomb();
+        this.bomb.bombWallCollision();
+        this.player.playerTresureCollision()
         if(this.player.playerTresureCollision()){
             this.score++
-            this.enemy.covidMovement();
-            console.log(score)
+            this.treasure.movementTreasure();
+            this.bomb.bombSpeed++
+            this.bomb.movementBomb()
+            console.log(this.bomb.bombSpeed)
+            score.innerText = this.score;
+        }
+        if(this.player.playerTresureCollision()){
+            this.score++
+            this.treasure.movementTreasure();
+            this.bomb.bombSpeed++
+            this.bomb.movementBomb()
+            console.log(this.bomb.bombSpeed)
             score.innerText = this.score;
         }
 
-
-        //*3.DRAWING ELEMENTS
+        // Draw functions
         ctx.drawImage(this.bg, 0, 0, canvas.width, canvas.height);
-        this.enemy.drawEnemy();
+        this.treasure.drawTreasure();
         this.player.drawPlayer();
         this.bomb.drawBomb();
 
-       
+       // Game Over
         if(this.player.playerBombCollision()){
             this.gameover()
         }
-        //*4.ANIMATION FRAME AND GAME LOGIC CHANGES
+
+        // Animations 
         if(!this.isGameOver) {
         requestAnimationFrame(this.gameLoop)
         }
-    }
-}
+    };
+};
