@@ -6,7 +6,7 @@ let restartBtn = document.querySelector("#restart-btn")
 let splashScreen = document.querySelector("#splash-screen")
 let gameoverScreen = document.querySelector("#gameover-screen")
 let score = document.querySelector("span")
-let scoreboard = 0;
+
 
 let game;
 

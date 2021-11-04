@@ -5,7 +5,8 @@ class Game {
         this.enemy = new Enemy();
         this.player = new Player();
         this.bomb = new Bomb();
-        this.isGameOver = false;      
+        this.isGameOver = false; 
+        this.score = 0;     
     }
 
     gameover = () => {
@@ -22,18 +23,19 @@ class Game {
         
 
 
-        if(this.enemy.counter % 120 === 0) {
-            this.enemy.covidMovement();
-        };
+        //if(this.enemy.counter % 120 === 0) {
+        //    this.enemy.covidMovement();
+        //};
         
         if(this.bomb.counter % 80 === 0){
             this.bomb.bombMovement()
         };
 
         if(this.player.playerTresureCollision()){
-            scoreboard += (1/20);
-            console.log(scoreboard)
-            score.innerText = Math.floor(scoreboard);
+            this.score++
+            this.enemy.covidMovement();
+            console.log(score)
+            score.innerText = this.score;
         }
 
 

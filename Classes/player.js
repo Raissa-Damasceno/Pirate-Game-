@@ -25,13 +25,13 @@ class Player{
     
         
         if (event.code === arrowRight) { 
-            if(this.x < canvas.height + 50) {
+            if(this.x < canvas.height - 140) {
             this.x = this.x + 30;
-            //console.log("Right")
+            console.log("Right")
         };
 
         } else if (event.code === arrowLeft) {
-            if(this.x > 0) {
+            if(this.x > 0 ) {
             this.x = this.x - 30
             //console.log("Left")
         };
@@ -43,7 +43,7 @@ class Player{
         };
 
         } else if (event.code === arrowDown) {
-            if(this.y < canvas.width - 375) {
+            if(this.y < canvas.width - 175) {
             this.y = this.y + 30
             //console.log("Down")
           };
@@ -68,7 +68,7 @@ class Player{
     playerTresureCollision = () => {
         
         if ((this.x + 50) < game.enemy.x + game.enemy.width &&
-        (this.x + 50) + (this.width - 150) > game.enemy.x &&
+            (this.x + 50) + (this.width - 150) > game.enemy.x &&
             (this.y + 50) < game.enemy.y + game.enemy.height &&
             (this.height - 75) + (this.y + 50) > game.enemy.y){
                 return true
@@ -77,6 +77,6 @@ class Player{
             }        
     };
 }
-    //this.player.playerMovement();
+  
 
     
