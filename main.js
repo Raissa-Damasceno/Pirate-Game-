@@ -17,10 +17,12 @@ let score = document.querySelector("span")
 let game;
 
 const startGame = () => {
-    //hide spash screen
     splashScreen.style.display = "none";
     //show canvas screen
     canvas.style.display = "flex"
+    scorespan.style.display = "flex"
+
+
     //start the game
 
     //we willhave a class for the Game that when I click
@@ -34,6 +36,7 @@ const startGame = () => {
     const restartGame = () => {
         gameoverScreen.style.display = "none";
         canvas.style.display = "flex";
+        scorespan.style.display = "flex"
 
         game = new Game();
         game.gameLoop();

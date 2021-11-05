@@ -26,3 +26,7 @@
 #gameover-screen {
   display: none;
 }
+
+#scorespan {
+  display: none;
+}

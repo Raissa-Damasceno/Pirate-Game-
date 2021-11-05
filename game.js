@@ -13,6 +13,7 @@ class Game {
         this.isGameOver = true;
         canvas.style.display = "none"
         gameoverScreen.style.display = "flex"
+        scorespan.style.display = "flex"
     };
     
     gameLoop = () => {
@@ -35,7 +36,7 @@ class Game {
         if(this.player.playerTresureCollision()){
             this.score++
             this.treasure.movementTreasure();
-            this.bomb.bombSpeed++
+            this.bomb.bombSpeed = (this.bomb.bombSpeed * (1/5))
             this.bomb.movementBomb()
             console.log(this.bomb.bombSpeed)
             score.innerText = this.score;
